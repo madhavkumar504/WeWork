@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-md-10">
+    <div class="list-group mt-2">
+      <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-columns"></i> Board</a>
+      <a href="#" class="list-group-item list-group-item-action mt-2"><img src="./assets/layout.png" style="width: 14px; height: 14px;" > Templates</a>
+      <a href="#" class="list-group-item list-group-item-action mt-2"><img src="./assets/online.png" style="width: 14px; height: 14px;" > Home</a>
+    </div>
+    <div id="accordion">
+      <div class="card cardStyle">
+        <div class="card-header">
+          <h6 href="#" class="text-white mt-2">WORKSPACES <i data-toggle="modal" data-target="#myBoard" class="fa fa-plus fa-x ml-2" aria-hidden="true"></i></h6>
+        </div>
+      </div>
+    </div>
+    <div class="scrollbar">
+    <div class="" *ngFor="let list of todo; index as id">
+      <a class="list-group-item aStyle list-group-item-action mt-2" data-toggle="collapse" href="#collapseOne{{id}}" >
+        {{list.workspace_name}}
+      </a>
+      <div id="collapseOne{{id}}" class="collapse show" data-parent="#accordion">
+        <div class="card-body">
+          <div class="dropdown" >
+              <button (click)="workspaceBoard(list)">Board</button>
+              <button>Highlights</button>
+              <button>Members</button>
+              <button>Setting</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- ================================================================== -->
+
+<!-- [pop up form for create workspace start] -->
+
+<!-- The Modal -->
+<div class="modal fade" id="myBoard">
+  <div class="modal-dialog modal-x">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Let's build a Workspace</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+        <div class="modal-body" style="width:1000px;">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="email">Workspace name:</label>
+              <input type="text" class="form-control" name="name" placeholder="Workspace name" id="email" #newTodo ngModel>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="dropdown">
+                  <label for="sel1">Workspace type:</label>
+                  <select class="form-control" id="sel1" name="type" #newTodo ngModel>
+                    <option *ngFor="let work of workspaceType">{{work}}</option>
+                  </select>
+                </div>
+                <label for="comment">Workspace Description:</label>
+                <textarea class="form-control" rows="3" placeholder="Our team organizes everything here." id="comment" name="desc" #newTodo ngModel></textarea>
+                <button type="submit" value="submit" class="btn btn-primary mt-2" (click)="addList(newTodo.value)" >Create Workspace</button>
+              </div>
+          </div>
+        </div>
+      </form>
+      <!-- Modal footer -->
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+<!-- [create Board popup form end] -->

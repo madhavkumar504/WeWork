@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title" *ngFor="let workspaceData of workspaceData"> {{workspaceData.name}} </h5>
+          <p class="card-text" *ngFor="let todoComments of todoComments; index as id"> {{id+1}}. {{todoComments}}</p>
+          <label for="comment">Comments:</label>
+          <textarea class="form-control" rows="2" placeholder="Comment something for task" id="comment" name="desc" #addcomments></textarea>
+          <button href="#" class="btn btn-primary btnStyle mt-2" (click)="addComment(addcomments.value)">Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

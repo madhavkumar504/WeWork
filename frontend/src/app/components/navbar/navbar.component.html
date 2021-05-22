@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-sm navbarColor navbar-dark">
+  <a class="navbar-brand" href="/profile">WeWork</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="" routerLink="profile" class="nav-link text-white" *ngIf = "loggedIn">Profile</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a type="button" data-toggle="dropdown" class=" nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" *ngIf="loggedIn"><i class="fa fa-plus" aria-hidden="true"></i>Create</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Create Board</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myBoard">Create Workspace</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" (click)="logout($event)" routerLink="profile" class="nav-link text-white" *ngIf = "loggedIn">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a href="" routerLink="login" class="nav-link text-white" *ngIf = "!loggedIn">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>

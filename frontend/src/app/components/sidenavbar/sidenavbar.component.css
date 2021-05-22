@@ -1,0 +1,11 @@
+.cardStyle{
+  background-color: #342628;
+}
+.aStyle{
+  overflow: auto;
+}
+.scrollbar{
+    height:350px;
+    overflow-y: scroll;
+
+}

@@ -1,0 +1,79 @@
+<div class="container">
+  <h2>{{workspaceBoardItem?.workspace_name}}</h2>
+  <h3>Description</h3>
+  <button class="editButton" type="button " href=""><i class="fa fa-edit"></i> Edit workspace details</button>
+</div>
+<div class="container mt-4 ">
+  <div class="row justify-content-center border-bottom">
+    <div class="btn-group">
+      <button type="button" class="btn btnStyle">Board</button>
+      <button type="button" class="btn btnStyle ml-2" data-toggle="modal" data-target="#taskModel">Add Task</button>
+      <button type="button" class="btn btnStyle ml-2">Members</button>
+      <button type="button" class="btn btnStyle ml-2">Setting</button>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3  ml-3 mb-2" *ngFor="let createTask of createTask; index as id">
+      <div class="parentCard" >
+        <div class="card eventShow" id="eventShow" style="width: 13rem; height: 7rem;text-align: center;font: normal normal normal 12px/14px Arial;letter-spacing: 0px; border-radius: unset;">
+          <div class="card-body items" >
+            <h5 class="card-title" (click)="createTaskDetail(createTask)">{{createTask.name}}</h5>
+            <p class="card-text">{{createTask.desc}}</p>
+            <button class="btn btn-danger btn-sm rounded-0" (click)="deleteTask(id)"><i class="fa fa-trash"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================[working]===================================== -->
+<!-- [pop up form for create workspace start] -->
+
+<!-- The Modal -->
+<div class="modal fade" id="taskModel">
+  <div class="modal-dialog modal-x">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Let's build a Task</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <form #usersData="ngForm" (ngSubmit)="onSubmit(usersData.value)">
+        <div class="modal-body" style="width:1000px;">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="email">Task name:</label>
+                <input type="text" class="form-control" name="name" placeholder="Task name" id="email" ngModel>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="dropdown">
+                  <label for="sel1">Add Member:</label>
+                  <select class="form-control" id="sel1" name="type" #newTodo ngModel>
+                    <option *ngFor="let getUsersData of getUsersData"> {{getUsersData.name}} </option>
+                  </select>
+                </div>
+                <label for="comment">Task Description:</label>
+                <textarea class="form-control" rows="2" placeholder="Task Description." id="comment" name="desc" ngModel></textarea>
+                <button type="submit" value="submit" class="btn btn-primary mt-2" >Create Task</button>
+              </div>
+            </div>
+        </div>
+      </form>
+      <!-- Modal footer -->
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+<!-- [create Board popup form end] -->
